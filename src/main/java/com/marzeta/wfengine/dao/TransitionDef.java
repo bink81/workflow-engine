@@ -4,7 +4,9 @@ import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.model.TransitionDefEntity;
 import com.marzeta.wfengine.dao.WorkflowDef;
+import javax.persistence.Entity;
 
+@Entity
 public class TransitionDef extends TransitionDefEntity {
 	private static final long serialVersionUID = 1L;
 

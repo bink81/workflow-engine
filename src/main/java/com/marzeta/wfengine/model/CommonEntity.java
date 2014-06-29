@@ -4,10 +4,17 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
+@MappedSuperclass
 public abstract class CommonEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name = "";
+	@Id
+	@GeneratedValue
 	private String id = "";
 
 	public CommonEntity() {
@@ -57,5 +64,16 @@ public abstract class CommonEntity implements Serializable {
 	@Override
 	public final int hashCode() {
 		return getId().hashCode();
+	}
+
+	@Version
+	protected Integer version;
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }

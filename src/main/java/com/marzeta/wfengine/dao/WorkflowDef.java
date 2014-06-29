@@ -4,7 +4,9 @@ import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.model.WorkflowDefEntity;
 import com.marzeta.wfengine.service.Workflow;
+import javax.persistence.Entity;
 
+@Entity
 public class WorkflowDef extends WorkflowDefEntity {
 	private static final long serialVersionUID = 1L;
 

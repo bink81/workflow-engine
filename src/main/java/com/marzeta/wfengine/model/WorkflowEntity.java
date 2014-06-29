@@ -6,12 +6,20 @@ import com.marzeta.wfengine.dao.WorkflowDef;
 import com.marzeta.wfengine.service.Activity;
 import com.marzeta.wfengine.service.Context;
 import com.marzeta.wfengine.service.Transition;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 
+@MappedSuperclass
 public abstract class WorkflowEntity extends CommonEntity {
 	private static final long serialVersionUID = 1L;
+	@OneToMany
 	private ArrayList<Activity> activities = new ArrayList<Activity>();
+	@OneToMany
 	private ArrayList<Transition> transitions = new ArrayList<Transition>();
+	@ManyToOne
 	private WorkflowDef workflowDef = null;
+	@ManyToOne
 	private Context context = null;
 
 	public WorkflowDef getWorkflowDef() {
