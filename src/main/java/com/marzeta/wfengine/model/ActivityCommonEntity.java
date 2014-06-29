@@ -1,8 +1,5 @@
 package com.marzeta.wfengine.model;
 
-import javax.persistence.MappedSuperclass;
-
-@MappedSuperclass
 public abstract class ActivityCommonEntity extends CommonEntity {
 	private static final long serialVersionUID = 1L;
 	private boolean urgent = false;

@@ -1,9 +1,7 @@
 package com.marzeta.wfengine.model;
 
 import java.util.HashMap;
-import javax.persistence.Entity;
 
-@Entity
 public class ContextDefEntity extends CommonEntity {
 	private static final long serialVersionUID = 1L;
 	

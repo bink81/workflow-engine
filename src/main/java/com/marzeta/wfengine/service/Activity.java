@@ -8,9 +8,7 @@ import com.marzeta.wfengine.commons.LoggingUtil;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.dao.ActivityDef;
 import com.marzeta.wfengine.model.ActivityEntity;
-import javax.persistence.Entity;
 
-@Entity
 public class Activity extends ActivityEntity {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
 	private static final long serialVersionUID = 1L;

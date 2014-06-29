@@ -2,17 +2,11 @@ package com.marzeta.wfengine.model;
 
 import com.marzeta.wfengine.dao.ActivityDef;
 import com.marzeta.wfengine.dao.WorkflowDef;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
 public abstract class TransitionDefEntity extends TransitionCommonEntity {
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
 	private ActivityDef fromActivityDef = null;
-	@ManyToOne
 	private ActivityDef toActivityDef = null;
-	@ManyToOne
 	private WorkflowDef workflowDef = null;
 
 	public ActivityDef getFromActivityDef() {
