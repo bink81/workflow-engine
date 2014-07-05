@@ -10,9 +10,11 @@ import com.marzeta.wfengine.model.ActivityDefEntity;
 
 public class ActivityDef extends ActivityDefEntity implements IActivityDef {
 	private static final long serialVersionUID = 1L;
+
 	private final static Logger LOG = Logger.getLogger(ActivityDefEntity.class.getName());
 
 	public static final String STOP = "STOP";
+
 	public static final String START = "START";
 
 	public ActivityDef() {
@@ -22,9 +24,6 @@ public class ActivityDef extends ActivityDefEntity implements IActivityDef {
 	public ActivityDef(WorkflowDef workflowDef, String name, boolean urgent) {
 		this();
 		setWorkflowDef(workflowDef);
-		if (workflowDef != null) {
-			workflowDef.getActivityDefs().add(this);
-		}
 		setName(name);
 		setUrgent(urgent);
 	}
@@ -33,6 +32,7 @@ public class ActivityDef extends ActivityDefEntity implements IActivityDef {
 		this(workflowDef, name, true);
 	}
 
+	@Override
 	public IResult execute() throws Throwable {
 		LOG.info("Processing activity " + this);
 		return OKResult.OK;

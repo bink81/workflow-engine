@@ -1,9 +1,21 @@
 package com.marzeta.wfengine.dao;
 
-import com.marzeta.wfengine.model.ContextDefEntity;
+import java.util.HashMap;
 
-public class ContextDef extends ContextDefEntity {
+import com.marzeta.wfengine.model.CommonEntity;
+
+public class ContextDef extends CommonEntity {
 	private static final long serialVersionUID = 1L;
+
+	private HashMap<String, Object> contextObjectDefs = new HashMap<String, Object>();
+
+	public HashMap<String, Object> getContextObjectDefs() {
+		return contextObjectDefs;
+	}
+
+	public void setContextObjectDefs(HashMap<String, Object> contextObjectDefs) {
+		this.contextObjectDefs = contextObjectDefs;
+	}
 
 	public ContextDef() {
 	}

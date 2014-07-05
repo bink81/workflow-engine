@@ -2,20 +2,56 @@ package com.marzeta.wfengine.service;
 
 import java.util.ArrayList;
 
+import javax.validation.constraints.NotNull;
+
 import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.dao.ActivityDef;
 import com.marzeta.wfengine.dao.TransitionDef;
 import com.marzeta.wfengine.dao.WorkflowDef;
-import com.marzeta.wfengine.model.WorkflowEntity;
+import com.marzeta.wfengine.model.CommonEntity;
 
-public class Workflow extends WorkflowEntity {
+public class Workflow extends CommonEntity {
 	private static final long serialVersionUID = 1L;
 
-	public Workflow() {
+	private ArrayList<Activity> activities = new ArrayList<Activity>();
+
+	private ArrayList<Transition> transitions = new ArrayList<Transition>();
+
+	@NotNull
+	private final WorkflowDef workflowDef;
+
+	private Context context = null;
+
+	public WorkflowDef getWorkflowDef() {
+		return workflowDef;
 	}
 
-	public Workflow(WorkflowDef workflowDef) {
-		setWorkflowDef(workflowDef);
+	public ArrayList<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(ArrayList<Activity> activities) {
+		this.activities = activities;
+	}
+
+	public ArrayList<Transition> getTransitions() {
+		return transitions;
+	}
+
+	public void setTransitions(ArrayList<Transition> transitions) {
+		this.transitions = transitions;
+	}
+
+	public Context getContext() {
+		return context;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
+	public Workflow(@NotNull WorkflowDef workflowDef) {
+		this.workflowDef = workflowDef;
 		setName(workflowDef.getName());
 		ActivityDef startActivityDef = workflowDef.getStartActivityDef();
 		getActivities().add(new Activity(startActivityDef, this));

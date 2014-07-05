@@ -125,10 +125,11 @@ public class ActivityEngineTest {
 			ArrayList<Activity> arrayList = new ArrayList<Activity>();
 			ContextDef contextDef = new ContextDef();
 			WorkflowDef workflowDef = new WorkflowDef("ErroneousWorkflowDef", contextDef);
-			new ActivityDef(workflowDef, "start");
+			workflowDef.addActivity(new ActivityDef(workflowDef, "start"));
 			Workflow workflow = null;
 			workflow = new Workflow(workflowDef);
 			ErroneousActivityDef activityDef = new ErroneousActivityDef(workflowDef, "ErroneousActivityDef");
+			workflowDef.addActivity(activityDef);
 			Activity activity = new Activity(activityDef, workflow);
 			arrayList.add(activity);
 			return arrayList;

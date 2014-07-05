@@ -54,4 +54,9 @@ public class TransitionDef extends TransitionCommonEntity {
 	public IResult getResult() {
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return fromActivityDef.getName() + "->" + toActivityDef.getName() + "(" + result.name() + ")";
+	}
 }

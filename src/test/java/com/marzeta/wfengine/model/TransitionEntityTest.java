@@ -9,6 +9,7 @@ import com.marzeta.wfengine.dao.ActivityDef;
 import com.marzeta.wfengine.service.Activity;
 import com.marzeta.wfengine.service.Transition;
 import com.marzeta.wfengine.service.Workflow;
+import com.marzeta.wfengine.utils.TestUtils;
 
 public class TransitionEntityTest {
 
@@ -25,7 +26,7 @@ public class TransitionEntityTest {
 	@Test
 	public void testSetters() throws Exception {
 		Transition transition = new Transition();
-		Workflow workflow = new Workflow();
+		Workflow workflow = TestUtils.createWorkflow();
 		ActivityDef activityDef = new ActivityDef();
 		Activity activity = new Activity(activityDef, workflow);
 
@@ -38,5 +39,4 @@ public class TransitionEntityTest {
 		assertEquals(activity, transition.getToActivity());
 		assertEquals(1, transition.getDelay());
 	}
-
 }
