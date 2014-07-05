@@ -3,24 +3,44 @@ package com.marzeta.wfengine.service;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javax.validation.constraints.NotNull;
+
 import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.commons.LoggingUtil;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.model.ActivityEntity;
+import com.marzeta.wfengine.model.ActivityCommonEntity;
 
-public class Activity extends ActivityEntity {
+public class Activity extends ActivityCommonEntity {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
 	private static final long serialVersionUID = 1L;
 
-	public Activity() {
-		LoggingUtil.setupLogger(LOG);
+	@NotNull
+	private final Workflow workflow;
+
+	private IResult result;
+
+	public IResult getResult() {
+		return result;
 	}
 
-	public Activity(ActivityDef activityDef, Workflow workflow) {
-		this();
-		setActivityDef(activityDef);
-		setWorkflow(workflow);
+	public void setResult(IResult result) {
+		this.result = result;
+	}
+
+	public Workflow getWorkflow() {
+		return workflow;
+	}
+
+	public ActivityDef getActivityDef() {
+		return activityDef;
+	}
+
+	@NotNull
+	private final ActivityDef activityDef;
+
+	public Activity(@NotNull ActivityDef activityDef, @NotNull Workflow workflow) {
+		this.activityDef = activityDef;
+		this.workflow = workflow;
 		setUrgent(activityDef.isUrgent());
 		setName(activityDef.getName());
 	}

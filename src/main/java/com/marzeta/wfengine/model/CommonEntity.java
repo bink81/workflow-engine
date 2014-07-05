@@ -3,7 +3,6 @@ package com.marzeta.wfengine.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 
 public abstract class CommonEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -45,8 +44,10 @@ public abstract class CommonEntity implements Serializable {
 
 	@Override
 	public final boolean equals(Object other) {
-		if (this == other) return true;
-    if (other == null) return false;
+		if (this == other)
+			return true;
+		if (other == null)
+			return false;
 		if (other instanceof CommonEntity) {
 			CommonEntity that = (CommonEntity) other;
 			return (this.getId() == that.getId() && this.getClass().equals(that.getClass()));

@@ -1,7 +1,6 @@
 package com.marzeta.wfengine.service;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -9,7 +8,6 @@ import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.dao.ActivityDef;
 import com.marzeta.wfengine.dao.ContextDef;
 import com.marzeta.wfengine.dao.ErroneousActivityDef;
@@ -46,10 +44,10 @@ public class ActivityEngineTest {
 	private class ActivityEngineWithNoActivities extends ActivityEngine {
 		private static final long serialVersionUID = 1L;
 
-		public ActivityEngineWithNoActivities(String name){
+		public ActivityEngineWithNoActivities(String name) {
 			super(name);
 		}
-		
+
 		@Override
 		public ArrayList<Activity> getActivities() {
 			return null;
@@ -57,48 +55,48 @@ public class ActivityEngineTest {
 	}
 
 	// ------------------------------------------------------------------------------------------------------------
-//	@Test
-//	public void testRunWithSingleActivities() throws Exception {
-		// ActivityEngineWithSingleActivities engine = new
-		// ActivityEngineWithSingleActivities();
-		// engine.run();
-		//
-		// assertEquals(3, workActivityDef.counter);
-		// assertEquals(1, engine.getInternalDelay());
-//	}
-//
-//	private class ActivityEngineWithSingleActivities extends ActivityEngine {
-//		@Override
-//		public ArrayList<Activity> getActivities() {
-//			ArrayList<Activity> activities = new ArrayList<Activity>();
-//			activities.add(new TestActivity(workActivityDef));
-//			activities.add(new TestActivity(workActivityDef));
-//			activities.add(new TestActivity(workActivityDef));
-//			return activities;
-//		}
-//	}
-//
-//	private class TestActivity extends Activity {
-//		public TestActivity(ActivityDef activityDef) {
-//			super(activityDef);
-//		}
-//	}
-//
-//	private class WorkActivityDef extends ActivityDef {
-//		private static final long serialVersionUID = 1L;
-//		int counter = 0;
-//
-//		@Override
-//		public IResult execute() {
-//			counter++;
-//			System.out.println("Running " + counter);
-//			return OKResult.DONE;
-//		}
-//	}
-//
-//	public enum OKResult implements IResult {
-//		DONE, ERROR
-//	}
+	// @Test
+	// public void testRunWithSingleActivities() throws Exception {
+	// ActivityEngineWithSingleActivities engine = new
+	// ActivityEngineWithSingleActivities();
+	// engine.run();
+	//
+	// assertEquals(3, workActivityDef.counter);
+	// assertEquals(1, engine.getInternalDelay());
+	// }
+	//
+	// private class ActivityEngineWithSingleActivities extends ActivityEngine {
+	// @Override
+	// public ArrayList<Activity> getActivities() {
+	// ArrayList<Activity> activities = new ArrayList<Activity>();
+	// activities.add(new TestActivity(workActivityDef));
+	// activities.add(new TestActivity(workActivityDef));
+	// activities.add(new TestActivity(workActivityDef));
+	// return activities;
+	// }
+	// }
+	//
+	// private class TestActivity extends Activity {
+	// public TestActivity(ActivityDef activityDef) {
+	// super(activityDef);
+	// }
+	// }
+	//
+	// private class WorkActivityDef extends ActivityDef {
+	// private static final long serialVersionUID = 1L;
+	// int counter = 0;
+	//
+	// @Override
+	// public IResult execute() {
+	// counter++;
+	// System.out.println("Running " + counter);
+	// return OKResult.DONE;
+	// }
+	// }
+	//
+	// public enum OKResult implements IResult {
+	// DONE, ERROR
+	// }
 
 	// ------------------------------------------------------------------------------------------------------------
 	@Test
@@ -108,7 +106,7 @@ public class ActivityEngineTest {
 
 		assertEquals(1, engine.getInternalDelay());
 	}
-	
+
 	@Test()
 	public void testRunWithException() throws Exception {
 		ActivityEngineWithException engine = new ActivityEngineWithException("testRunWithException");
@@ -118,25 +116,21 @@ public class ActivityEngineTest {
 	private class ActivityEngineWithException extends ActivityEngine {
 		private static final long serialVersionUID = 1L;
 
-		public ActivityEngineWithException(String name){
+		public ActivityEngineWithException(String name) {
 			super(name);
 		}
-		
+
 		@Override
 		public ArrayList<Activity> getActivities() {
 			ArrayList<Activity> arrayList = new ArrayList<Activity>();
 			ContextDef contextDef = new ContextDef();
-			WorkflowDef workflowDef = new WorkflowDef("ErroneousWorkflowDef", contextDef );
+			WorkflowDef workflowDef = new WorkflowDef("ErroneousWorkflowDef", contextDef);
 			new ActivityDef(workflowDef, "start");
 			Workflow workflow = null;
-			try {
-				workflow = new Workflow(workflowDef);
-			} catch (ConfigurationException e) {
-				e.printStackTrace();
-			}
-			ErroneousActivityDef activityDef = new ErroneousActivityDef(workflowDef , "ErroneousActivityDef");
+			workflow = new Workflow(workflowDef);
+			ErroneousActivityDef activityDef = new ErroneousActivityDef(workflowDef, "ErroneousActivityDef");
 			Activity activity = new Activity(activityDef, workflow);
-			arrayList.add(activity );
+			arrayList.add(activity);
 			return arrayList;
 		}
 	}

@@ -14,7 +14,7 @@ public class Workflow extends WorkflowEntity {
 	public Workflow() {
 	}
 
-	public Workflow(WorkflowDef workflowDef) throws ConfigurationException {
+	public Workflow(WorkflowDef workflowDef) {
 		setWorkflowDef(workflowDef);
 		setName(workflowDef.getName());
 		ActivityDef startActivityDef = workflowDef.getStartActivityDef();
@@ -31,19 +31,13 @@ public class Workflow extends WorkflowEntity {
 		return null;
 	}
 
-	public ArrayList<Activity> createNextActivity(Activity fromActivity)
-			throws ConfigurationException {
+	public ArrayList<Activity> createNextActivity(Activity fromActivity) throws ConfigurationException {
 		ArrayList<Activity> newActivities = new ArrayList<Activity>();
 		WorkflowDef workflowDef = getWorkflowDef();
 		for (TransitionDef transitionDef : workflowDef.getTransitionDefs()) {
-			if (transitionDef.getFromActivityDef().equals(
-					fromActivity.getActivityDef())
-					&& transitionDef.getToActivityDef() != null
-					&& transitionDef.getResult().equals(
-							fromActivity.getResult())) {
-				Activity toActivity = new Activity(
-						transitionDef.getToActivityDef(),
-						fromActivity.getWorkflow());
+			if (transitionDef.getFromActivityDef().equals(fromActivity.getActivityDef())
+					&& transitionDef.getToActivityDef() != null && transitionDef.getResult().equals(fromActivity.getResult())) {
+				Activity toActivity = new Activity(transitionDef.getToActivityDef(), fromActivity.getWorkflow());
 				getActivities().add(toActivity);
 				getTransitions().add(new Transition(this, transitionDef));
 				newActivities.add(toActivity);
@@ -51,21 +45,17 @@ public class Workflow extends WorkflowEntity {
 			}
 		}
 		if (newActivities.isEmpty() && !fromActivity.isStopActivity()) {
-			throw new ConfigurationException(
-					"Next activity cannot be found for " + fromActivity
-							+ " in " + this);
+			throw new ConfigurationException("Next activity cannot be found for " + fromActivity + " in " + this);
 		}
 		return newActivities;
 	}
 
-	public Activity getActivityFor(ActivityDef activityDef)
-			throws ConfigurationException {
+	public Activity getActivityFor(ActivityDef activityDef) throws ConfigurationException {
 		for (Activity activity : getActivities()) {
 			if (activity.getActivityDef() == activityDef) {
 				return activity;
 			}
 		}
-		throw new ConfigurationException("No activity found for activityDef"
-				+ activityDef + " in " + this);
+		throw new ConfigurationException("No activity found for activityDef" + activityDef + " in " + this);
 	}
 }

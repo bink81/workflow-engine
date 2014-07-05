@@ -1,5 +1,7 @@
 package com.marzeta.wfengine.dao;
 
+import javax.validation.constraints.NotNull;
+
 import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.model.WorkflowDefEntity;
@@ -8,9 +10,10 @@ import com.marzeta.wfengine.service.Workflow;
 public class WorkflowDef extends WorkflowDefEntity {
 	private static final long serialVersionUID = 1L;
 
-	public WorkflowDef(){}
-	
-	public WorkflowDef(String name, ContextDef contextDef){
+	public WorkflowDef() {
+	}
+
+	public WorkflowDef(String name, ContextDef contextDef) {
 		setName(name);
 		setContextDef(contextDef);
 	}
@@ -19,7 +22,8 @@ public class WorkflowDef extends WorkflowDefEntity {
 		return new Workflow(this);
 	}
 
-	public ActivityDef getStartActivityDef() throws ConfigurationException {
+	public @NotNull
+	ActivityDef getStartActivityDef() throws ConfigurationException {
 		for (ActivityDef activityDef : getActivityDefs()) {
 			if (activityDef.getName().equalsIgnoreCase(ActivityDef.START)) {
 				return activityDef;

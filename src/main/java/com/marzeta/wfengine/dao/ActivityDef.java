@@ -1,15 +1,12 @@
 package com.marzeta.wfengine.dao;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.marzeta.wfengine.model.ActivityDefEntity;
-import com.marzeta.wfengine.model.CommonEntity;
-import com.marzeta.wfengine.dao.WorkflowDef;
 import com.marzeta.wfengine.commons.IActivityDef;
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.LoggingUtil;
 import com.marzeta.wfengine.commons.OKResult;
+import com.marzeta.wfengine.model.ActivityDefEntity;
 
 public class ActivityDef extends ActivityDefEntity implements IActivityDef {
 	private static final long serialVersionUID = 1L;
@@ -31,7 +28,7 @@ public class ActivityDef extends ActivityDefEntity implements IActivityDef {
 		setName(name);
 		setUrgent(urgent);
 	}
-	
+
 	public ActivityDef(WorkflowDef workflowDef, String name) {
 		this(workflowDef, name, true);
 	}
