@@ -12,6 +12,7 @@ import com.marzeta.wfengine.model.ActivityCommonEntity;
 
 public class Activity extends ActivityCommonEntity {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
+
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
@@ -27,6 +28,7 @@ public class Activity extends ActivityCommonEntity {
 		this.result = result;
 	}
 
+	@NotNull
 	public Workflow getWorkflow() {
 		return workflow;
 	}
@@ -39,6 +41,7 @@ public class Activity extends ActivityCommonEntity {
 	private final ActivityDef activityDef;
 
 	public Activity(@NotNull ActivityDef activityDef, @NotNull Workflow workflow) {
+		super();
 		this.activityDef = activityDef;
 		this.workflow = workflow;
 		setUrgent(activityDef.isUrgent());

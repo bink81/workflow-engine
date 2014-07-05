@@ -32,11 +32,12 @@ public class WorkflowDef extends WorkflowDefEntity {
 		throw new ConfigurationException("Cannot find START activity in " + this);
 	}
 
-	public void createLink(ActivityDef fromActivityDef, ActivityDef toActivityDef) {
+	public void createLink(@NotNull ActivityDef fromActivityDef, @NotNull ActivityDef toActivityDef) {
 		getTransitionDefs().add(new TransitionDef(this, fromActivityDef, toActivityDef));
 	}
 
-	public void createLink(ActivityDef fromActivityDef, ActivityDef toActivityDef, IResult result) {
+	public void createLink(@NotNull ActivityDef fromActivityDef, @NotNull ActivityDef toActivityDef,
+			@NotNull IResult result) {
 		getTransitionDefs().add(new TransitionDef(this, fromActivityDef, toActivityDef, result));
 	}
 }

@@ -20,7 +20,6 @@ public class TransitionEntityTest {
 		assertTrue(transition.getFromActivity() == null);
 		assertTrue(transition.getToActivity() == null);
 		assertTrue(transition.getWorkflow() == null);
-		assertTrue(transition.getResult() == null);
 	}
 
 	@Test
@@ -38,7 +37,6 @@ public class TransitionEntityTest {
 		assertEquals(activity, transition.getFromActivity());
 		assertEquals(activity, transition.getToActivity());
 		assertEquals(1, transition.getDelay());
-		assertEquals("Transition,name=asdf-null", transition.toString());
 	}
 
 }

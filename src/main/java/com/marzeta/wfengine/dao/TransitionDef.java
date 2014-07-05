@@ -1,23 +1,57 @@
 package com.marzeta.wfengine.dao;
 
+import javax.validation.constraints.NotNull;
+
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.TransitionDefEntity;
+import com.marzeta.wfengine.model.TransitionCommonEntity;
 
-public class TransitionDef extends TransitionDefEntity {
+public class TransitionDef extends TransitionCommonEntity {
 	private static final long serialVersionUID = 1L;
 
-	public TransitionDef() {
-	}
+	@NotNull
+	private final ActivityDef fromActivityDef;
 
-	public TransitionDef(WorkflowDef workflowDef, ActivityDef fromActivityDef, ActivityDef toActivityDef) {
+	@NotNull
+	private final ActivityDef toActivityDef;
+
+	@NotNull
+	private final WorkflowDef workflowDef;
+
+	@NotNull
+	private final IResult result;
+
+	public TransitionDef(@NotNull WorkflowDef workflowDef, @NotNull ActivityDef fromActivityDef,
+			@NotNull ActivityDef toActivityDef) {
 		this(workflowDef, fromActivityDef, toActivityDef, OKResult.OK);
 	}
 
-	public TransitionDef(WorkflowDef workflowDef, ActivityDef fromActivityDef, ActivityDef toActivityDef, IResult result) {
-		setWorkflowDef(workflowDef);
-		setFromActivityDef(fromActivityDef);
-		setToActivityDef(toActivityDef);
-		setResult(result);
+	public TransitionDef(@NotNull WorkflowDef workflowDef, @NotNull ActivityDef fromActivityDef,
+			@NotNull ActivityDef toActivityDef, @NotNull IResult result) {
+		super();
+		this.workflowDef = workflowDef;
+		this.fromActivityDef = fromActivityDef;
+		this.toActivityDef = toActivityDef;
+		this.result = result;
+	}
+
+	@NotNull
+	public ActivityDef getFromActivityDef() {
+		return fromActivityDef;
+	}
+
+	@NotNull
+	public ActivityDef getToActivityDef() {
+		return toActivityDef;
+	}
+
+	@NotNull
+	public WorkflowDef getWorkflowDef() {
+		return workflowDef;
+	}
+
+	@NotNull
+	public IResult getResult() {
+		return result;
 	}
 }
