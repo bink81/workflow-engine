@@ -3,9 +3,9 @@ package com.marzeta.wfengine.service;
 import java.util.Properties;
 
 import com.marzeta.wfengine.commons.Storage;
-import com.marzeta.wfengine.model.common.CommonEntity;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
-public class EngineEntity extends CommonEntity {
+public class EngineEntity extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 	private String name = "DefaultEngineName";
 	private Properties properties = new Properties();

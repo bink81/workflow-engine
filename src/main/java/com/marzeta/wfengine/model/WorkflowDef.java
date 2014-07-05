@@ -6,9 +6,9 @@ import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.model.common.CommonEntity;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
-public class WorkflowDef extends CommonEntity {
+public class WorkflowDef extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 
 	private ArrayList<ActivityDef> activityDefs = new ArrayList<ActivityDef>();

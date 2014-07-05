@@ -6,10 +6,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import com.marzeta.wfengine.model.common.CommonEntity;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
 public class Storage {
-	public CommonEntity readFile(String filename) {
+	public EntityCommon readFile(String filename) {
 		FileInputStream os = null;
 		try {
 			os = new FileInputStream(filename);
@@ -17,12 +17,12 @@ public class Storage {
 			e.printStackTrace();
 		}
 		XMLDecoder decoder = new XMLDecoder(os);
-		CommonEntity object = (CommonEntity) decoder.readObject();
+		EntityCommon object = (EntityCommon) decoder.readObject();
 		decoder.close();
 		return object;
 	}
 
-	public String saveObjectToFile(CommonEntity object) {
+	public String saveObjectToFile(EntityCommon object) {
 //		System.out.println("Saving workflow " + object);
 		String filename = object.toString() + ".xml";
 		try {

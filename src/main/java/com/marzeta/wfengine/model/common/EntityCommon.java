@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class CommonEntity implements Serializable {
+public abstract class EntityCommon implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name = "";
 	private String id = "";
 
-	public CommonEntity() {
+	public EntityCommon() {
 		setId(getCurrentTime());
 	}
 
@@ -48,8 +48,8 @@ public abstract class CommonEntity implements Serializable {
 			return true;
 		if (other == null)
 			return false;
-		if (other instanceof CommonEntity) {
-			CommonEntity that = (CommonEntity) other;
+		if (other instanceof EntityCommon) {
+			EntityCommon that = (EntityCommon) other;
 			return (this.getId() == that.getId() && this.getClass().equals(that.getClass()));
 		}
 		return false;

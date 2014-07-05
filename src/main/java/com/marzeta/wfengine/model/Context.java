@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.model.common.CommonEntity;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
-public class Context extends CommonEntity {
+public class Context extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
