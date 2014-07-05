@@ -41,4 +41,9 @@ public class ActivityDef extends ActivityCommon implements IActivityDef {
 		LOG.info("Processing activity " + this);
 		return OKResult.OK;
 	}
+
+	@Override
+	public String toString() {
+		return "ActivityDef [ " + super.toString() + "workflowDef=" + workflowDef + "]";
+	}
 }

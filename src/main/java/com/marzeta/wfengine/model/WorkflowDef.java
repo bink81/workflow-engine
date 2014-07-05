@@ -86,4 +86,10 @@ public class WorkflowDef extends EntityCommon {
 	public void addActivity(@NotNull ActivityDef ativityDef) {
 		getActivityDefs().add(ativityDef);
 	}
+
+	@Override
+	public String toString() {
+		return "WorkflowDef [" + super.toString() + ", contextDef=" + contextDef + "]";
+	}
+
 }

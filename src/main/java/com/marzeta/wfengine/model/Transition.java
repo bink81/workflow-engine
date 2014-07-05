@@ -37,4 +37,11 @@ public class Transition extends TransitionCommon {
 	public Workflow getWorkflow() {
 		return workflow;
 	}
+
+	@Override
+	public String toString() {
+		return "Transition[ " + super.toString() + "fromActivity=" + fromActivity + ", toActivity=" + toActivity
+				+ ", workflow=" + workflow + "]";
+	}
+
 }

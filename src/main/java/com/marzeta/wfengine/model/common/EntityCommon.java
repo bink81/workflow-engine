@@ -6,7 +6,9 @@ import java.util.Date;
 
 public abstract class EntityCommon implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	private String name = "";
+
 	private String id = "";
 
 	public EntityCommon() {
@@ -28,11 +30,6 @@ public abstract class EntityCommon implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + ",name=" + getName();
 	}
 
 	private String getCurrentTime() {
@@ -58,5 +55,10 @@ public abstract class EntityCommon implements Serializable {
 	@Override
 	public final int hashCode() {
 		return getId().hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return ", name=" + name + ", id=" + id;
 	}
 }

@@ -19,4 +19,9 @@ public class ContextDef extends EntityCommon {
 
 	public ContextDef() {
 	}
+
+	@Override
+	public String toString() {
+		return "ContextDef [" + super.toString() + ", contextObjectDefs=" + contextObjectDefs + "]";
+	}
 }

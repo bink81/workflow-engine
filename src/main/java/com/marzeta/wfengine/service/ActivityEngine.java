@@ -10,8 +10,11 @@ import com.marzeta.wfengine.model.Activity;
 
 public abstract class ActivityEngine extends EngineEntity {
 	private static final long serialVersionUID = 1L;
+
 	private static final String PROP_FILE = "properties.txt";
+
 	public static final String EXCEPTION_TEST_TEXT = "Just testing exception handling...";
+
 	private final static Logger LOG = Logger.getLogger(ActivityEngine.class.getName());
 
 	public ActivityEngine() {
@@ -23,7 +26,7 @@ public abstract class ActivityEngine extends EngineEntity {
 		readPropertiesFile();
 		LoggingUtil.setupLogger(LOG);
 	}
-	
+
 	public void run() {
 		LOG.info("Starting engine '" + getName() + "'...");
 		ArrayList<Activity> queue = getActivities();
@@ -42,8 +45,7 @@ public abstract class ActivityEngine extends EngineEntity {
 				try {
 					activity.run();
 				} catch (Throwable e) {
-					if (e.getMessage() != null 
-							&& !e.getMessage().equalsIgnoreCase(EXCEPTION_TEST_TEXT)) {
+					if (e.getMessage() != null && !e.getMessage().equalsIgnoreCase(EXCEPTION_TEST_TEXT)) {
 						e.printStackTrace();
 					}
 					LOG.severe("Continuing after an error in processing activity " + activity + ";\n  Exception=" + e);

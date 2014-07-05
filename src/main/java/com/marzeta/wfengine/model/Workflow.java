@@ -77,7 +77,7 @@ public class Workflow extends EntityCommon {
 				break;
 			}
 		}
-		if (newActivities.isEmpty() && !fromActivity.isStopActivity()) {
+		if (newActivities.isEmpty() && !fromActivity.isStop()) {
 			throw new ConfigurationException("Next activity cannot be found for " + fromActivity + " in " + this);
 		}
 		return newActivities;
@@ -91,5 +91,10 @@ public class Workflow extends EntityCommon {
 			}
 		}
 		throw new ConfigurationException("No activity found for activityDef" + activityDef + " in " + this);
+	}
+
+	@Override
+	public String toString() {
+		return "Workflow [ " + super.toString() + ", workflowDef=" + workflowDef + ", context=" + context + "]";
 	}
 }

@@ -31,4 +31,10 @@ public class Context extends EntityCommon {
 	public HashMap<String, Object> getContextObjects() {
 		return contextObjects;
 	}
+
+	@Override
+	public String toString() {
+		return "Context [" + super.toString() + ", contextDef=" + contextDef + ", contextObjects=" + contextObjects + "]";
+	}
+
 }

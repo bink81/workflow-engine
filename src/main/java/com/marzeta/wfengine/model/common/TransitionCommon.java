@@ -1,6 +1,5 @@
 package com.marzeta.wfengine.model.common;
 
-
 public abstract class TransitionCommon extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 
@@ -12,5 +11,10 @@ public abstract class TransitionCommon extends EntityCommon {
 
 	public void setDelay(long delay) {
 		this.delay = delay;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + ", delay=" + delay;
 	}
 }

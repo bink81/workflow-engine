@@ -85,7 +85,13 @@ public class Activity extends ActivityCommon {
 		return getResult();
 	}
 
-	public boolean isStopActivity() {
+	public boolean isStop() {
 		return getName().equalsIgnoreCase(ActivityDef.STOP);
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [ " + super.toString() + "workflow=" + workflow + ", result=" + result + ", activityDef="
+				+ activityDef + "]";
 	}
 }
