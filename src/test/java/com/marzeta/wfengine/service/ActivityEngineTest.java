@@ -8,11 +8,13 @@ import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.dao.ContextDef;
 import com.marzeta.wfengine.dao.ErroneousActivityDef;
 import com.marzeta.wfengine.dao.WorkActivityDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
+import com.marzeta.wfengine.model.Activity;
+import com.marzeta.wfengine.model.ActivityDef;
+import com.marzeta.wfengine.model.ContextDef;
+import com.marzeta.wfengine.model.Workflow;
+import com.marzeta.wfengine.model.WorkflowDef;
 
 public class ActivityEngineTest {
 	WorkActivityDef workActivityDef;

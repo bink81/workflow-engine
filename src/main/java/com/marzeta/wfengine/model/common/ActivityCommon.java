@@ -1,4 +1,5 @@
-package com.marzeta.wfengine.model;
+package com.marzeta.wfengine.model.common;
+
 
 public abstract class ActivityCommon extends CommonEntity {
 	private static final long serialVersionUID = 1L;

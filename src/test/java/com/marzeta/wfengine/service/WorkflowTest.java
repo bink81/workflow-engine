@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.marzeta.wfengine.commons.ConfigurationException;
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
+import com.marzeta.wfengine.model.Activity;
+import com.marzeta.wfengine.model.ActivityDef;
+import com.marzeta.wfengine.model.ContextDef;
+import com.marzeta.wfengine.model.Transition;
+import com.marzeta.wfengine.model.Workflow;
+import com.marzeta.wfengine.model.WorkflowDef;
 import com.marzeta.wfengine.utils.TestUtils;
 
 public class WorkflowTest {

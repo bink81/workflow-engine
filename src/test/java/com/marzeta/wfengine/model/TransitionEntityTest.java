@@ -4,13 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
-import com.marzeta.wfengine.service.Activity;
-import com.marzeta.wfengine.service.Transition;
-import com.marzeta.wfengine.service.Workflow;
-
 public class TransitionEntityTest {
 
 	@Test

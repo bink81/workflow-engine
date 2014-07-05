@@ -1,4 +1,4 @@
-package com.marzeta.wfengine.service;
+package com.marzeta.wfengine.model;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -7,8 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.model.ActivityCommon;
+import com.marzeta.wfengine.model.common.ActivityCommon;
 
 public class Activity extends ActivityCommon {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());

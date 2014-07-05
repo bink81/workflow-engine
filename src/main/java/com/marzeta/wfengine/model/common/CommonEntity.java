@@ -1,4 +1,4 @@
-package com.marzeta.wfengine.model;
+package com.marzeta.wfengine.model.common;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

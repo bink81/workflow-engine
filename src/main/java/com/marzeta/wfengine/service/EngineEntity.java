@@ -1,8 +1,9 @@
-package com.marzeta.wfengine.model;
+package com.marzeta.wfengine.service;
 
 import java.util.Properties;
 
 import com.marzeta.wfengine.commons.Storage;
+import com.marzeta.wfengine.model.common.CommonEntity;
 
 public class EngineEntity extends CommonEntity {
 	private static final long serialVersionUID = 1L;

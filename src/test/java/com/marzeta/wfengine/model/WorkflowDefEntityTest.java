@@ -7,11 +7,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.dao.TransitionDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
-
 public class WorkflowDefEntityTest {
 
 	@Test

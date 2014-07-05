@@ -1,11 +1,10 @@
-package com.marzeta.wfengine.service;
+package com.marzeta.wfengine.model;
 
 import java.util.HashMap;
 
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.model.CommonEntity;
+import com.marzeta.wfengine.model.common.CommonEntity;
 
 public class Context extends CommonEntity {
 	private static final long serialVersionUID = 1L;

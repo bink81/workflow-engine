@@ -3,10 +3,12 @@ package com.marzeta.wfengine.service;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.marzeta.wfengine.dao.ContextDef;
 import com.marzeta.wfengine.dao.EmptyActivityDef;
 import com.marzeta.wfengine.dao.WorkActivityDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
+import com.marzeta.wfengine.model.Activity;
+import com.marzeta.wfengine.model.ContextDef;
+import com.marzeta.wfengine.model.Workflow;
+import com.marzeta.wfengine.model.WorkflowDef;
 
 public class TestWorkflowEngine extends ActivityEngine {
 	private static final long serialVersionUID = 1L;

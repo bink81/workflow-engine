@@ -5,10 +5,6 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.dao.WorkflowDef;
-
 public class CommonEntityTest {
 
 	@Test

@@ -3,6 +3,8 @@ package com.marzeta.wfengine.dao;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IResult;
+import com.marzeta.wfengine.model.ActivityDef;
+import com.marzeta.wfengine.model.WorkflowDef;
 import com.marzeta.wfengine.service.ActivityEngine;
 
 public class ErroneousActivityDef extends ActivityDef {

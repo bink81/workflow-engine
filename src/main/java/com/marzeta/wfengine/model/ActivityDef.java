@@ -1,4 +1,4 @@
-package com.marzeta.wfengine.dao;
+package com.marzeta.wfengine.model;
 
 import java.util.logging.Logger;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import com.marzeta.wfengine.commons.IActivityDef;
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.ActivityCommon;
+import com.marzeta.wfengine.model.common.ActivityCommon;
 
 public class ActivityDef extends ActivityCommon implements IActivityDef {
 	private static final long serialVersionUID = 1L;

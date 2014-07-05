@@ -6,9 +6,6 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.service.Context;
-
 public class ContextEntityTest {
 
 	private static final String DUMMY_KEY = "DUMMY_KEY";

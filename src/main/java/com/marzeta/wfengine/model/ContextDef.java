@@ -1,8 +1,8 @@
-package com.marzeta.wfengine.dao;
+package com.marzeta.wfengine.model;
 
 import java.util.HashMap;
 
-import com.marzeta.wfengine.model.CommonEntity;
+import com.marzeta.wfengine.model.common.CommonEntity;
 
 public class ContextDef extends CommonEntity {
 	private static final long serialVersionUID = 1L;

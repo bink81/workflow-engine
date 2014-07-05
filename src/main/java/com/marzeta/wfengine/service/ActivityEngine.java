@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.marzeta.wfengine.commons.LoggingUtil;
-import com.marzeta.wfengine.model.EngineEntity;
+import com.marzeta.wfengine.model.Activity;
 
 public abstract class ActivityEngine extends EngineEntity {
 	private static final long serialVersionUID = 1L;

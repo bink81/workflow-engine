@@ -1,8 +1,8 @@
-package com.marzeta.wfengine.service;
+package com.marzeta.wfengine.model;
 
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.model.TransitionCommon;
+import com.marzeta.wfengine.model.common.TransitionCommon;
 
 public class Transition extends TransitionCommon {
 	private static final long serialVersionUID = 1L;

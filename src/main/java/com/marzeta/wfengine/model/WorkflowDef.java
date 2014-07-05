@@ -1,4 +1,4 @@
-package com.marzeta.wfengine.dao;
+package com.marzeta.wfengine.model;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.model.CommonEntity;
-import com.marzeta.wfengine.service.Workflow;
+import com.marzeta.wfengine.model.common.CommonEntity;
 
 public class WorkflowDef extends CommonEntity {
 	private static final long serialVersionUID = 1L;

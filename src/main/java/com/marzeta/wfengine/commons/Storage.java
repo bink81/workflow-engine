@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import com.marzeta.wfengine.model.CommonEntity;
+import com.marzeta.wfengine.model.common.CommonEntity;
 
 public class Storage {
 	public CommonEntity readFile(String filename) {
