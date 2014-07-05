@@ -1,37 +1,27 @@
 package com.marzeta.wfengine.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import com.marzeta.wfengine.dao.ActivityDef;
+import com.marzeta.wfengine.dao.ContextDef;
+import com.marzeta.wfengine.dao.WorkflowDef;
 import com.marzeta.wfengine.service.Activity;
 import com.marzeta.wfengine.service.Transition;
 import com.marzeta.wfengine.service.Workflow;
-import com.marzeta.wfengine.utils.TestUtils;
 
 public class TransitionEntityTest {
 
 	@Test
-	public void testInitial() throws Exception {
-		Transition transition = new Transition();
-
-		assertTrue(transition.getDelay() == 0);
-		assertTrue(transition.getFromActivity() == null);
-		assertTrue(transition.getToActivity() == null);
-		assertTrue(transition.getWorkflow() == null);
-	}
-
-	@Test
 	public void testSetters() throws Exception {
-		Transition transition = new Transition();
-		Workflow workflow = TestUtils.createWorkflow();
-		ActivityDef activityDef = new ActivityDef();
+		WorkflowDef wd = new WorkflowDef("createWorkflow", new ContextDef());
+		ActivityDef activityDef = new ActivityDef(wd, "2");
+		wd.addActivity(activityDef);
+		Workflow workflow = new Workflow(wd);
 		Activity activity = new Activity(activityDef, workflow);
 
-		transition.setFromActivity(activity);
-		transition.setToActivity(activity);
+		Transition transition = new Transition(workflow, activity, activity);
 		transition.setDelay(1);
 		transition.setName("asdf");
 

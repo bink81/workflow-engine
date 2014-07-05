@@ -2,34 +2,38 @@ package com.marzeta.wfengine.dao;
 
 import java.util.logging.Logger;
 
+import javax.validation.constraints.NotNull;
+
 import com.marzeta.wfengine.commons.IActivityDef;
 import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.commons.LoggingUtil;
 import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.ActivityDefEntity;
+import com.marzeta.wfengine.model.ActivityCommon;
 
-public class ActivityDef extends ActivityDefEntity implements IActivityDef {
+public class ActivityDef extends ActivityCommon implements IActivityDef {
 	private static final long serialVersionUID = 1L;
 
-	private final static Logger LOG = Logger.getLogger(ActivityDefEntity.class.getName());
+	private final static Logger LOG = Logger.getLogger(ActivityDef.class.getName());
 
 	public static final String STOP = "STOP";
 
 	public static final String START = "START";
 
-	public ActivityDef() {
-		LoggingUtil.setupLogger(LOG);
+	@NotNull
+	private final WorkflowDef workflowDef;
+
+	public ActivityDef(@NotNull WorkflowDef workflowDef, String name) {
+		this(workflowDef, name, true);
 	}
 
-	public ActivityDef(WorkflowDef workflowDef, String name, boolean urgent) {
-		this();
-		setWorkflowDef(workflowDef);
+	public ActivityDef(@NotNull WorkflowDef workflowDef, String name, boolean urgent) {
+		super();
+		this.workflowDef = workflowDef;
 		setName(name);
 		setUrgent(urgent);
 	}
 
-	public ActivityDef(WorkflowDef workflowDef, String name) {
-		this(workflowDef, name, true);
+	public WorkflowDef getWorkflowDef() {
+		return workflowDef;
 	}
 
 	@Override

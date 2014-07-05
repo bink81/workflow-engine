@@ -1,19 +1,40 @@
 package com.marzeta.wfengine.service;
 
-import com.marzeta.wfengine.commons.ConfigurationException;
-import com.marzeta.wfengine.dao.TransitionDef;
-import com.marzeta.wfengine.model.TransitionEntity;
+import javax.validation.constraints.NotNull;
 
-public class Transition extends TransitionEntity {
+import com.marzeta.wfengine.model.TransitionCommon;
+
+public class Transition extends TransitionCommon {
 	private static final long serialVersionUID = 1L;
 
-	public Transition() {
+	@NotNull
+	private final Activity fromActivity;
+
+	@NotNull
+	private final Activity toActivity;
+
+	@NotNull
+	private final Workflow workflow;
+
+	public Transition(@NotNull Workflow workflow, @NotNull Activity fromActivity, @NotNull Activity toActivity) {
+		this.workflow = workflow;
+		this.fromActivity = fromActivity;
+		this.toActivity = toActivity;
+		// this.fromActivity =
+		// workflow.getActivityFor(transitionDef.getFromActivityDef());
+		// this.toActivity =
+		// workflow.getActivityFor(transitionDef.getToActivityDef());
 	}
 
-	public Transition(Workflow workflow, TransitionDef transitionDef) throws ConfigurationException {
-		setWorkflow(workflow);
-		setTransitionDef(transitionDef);
-		setFromActivity(workflow.getActivityFor(transitionDef.getFromActivityDef()));
-		setToActivity(workflow.getActivityFor(transitionDef.getToActivityDef()));
+	public Activity getFromActivity() {
+		return fromActivity;
+	}
+
+	public Activity getToActivity() {
+		return toActivity;
+	}
+
+	public Workflow getWorkflow() {
+		return workflow;
 	}
 }

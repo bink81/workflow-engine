@@ -16,9 +16,10 @@ public class WorkflowDef extends CommonEntity {
 
 	private ArrayList<TransitionDef> transitionDefs = new ArrayList<TransitionDef>();
 
-	private ContextDef contextDef = null;
+	@NotNull
+	private ContextDef contextDef;
 
-	public WorkflowDef(String name, ContextDef contextDef) {
+	public WorkflowDef(String name, @NotNull ContextDef contextDef) {
 		this.contextDef = contextDef;
 		setName(name);
 		activityDefs.add(new ActivityDef(this, ActivityDef.START));
@@ -41,20 +42,21 @@ public class WorkflowDef extends CommonEntity {
 		this.transitionDefs = transitionDefs;
 	}
 
+	@NotNull
 	public ContextDef getContextDef() {
 		return contextDef;
 	}
 
-	public void setContextDef(ContextDef contextDef) {
+	public void setContextDef(@NotNull ContextDef contextDef) {
 		this.contextDef = contextDef;
 	}
 
-	public Workflow startWorkflow() throws ConfigurationException {
+	public Workflow startWorkflow() {
 		return new Workflow(this);
 	}
 
 	public @NotNull
-	ActivityDef getStartActivityDef() throws ConfigurationException {
+	ActivityDef getStartActivityDef() {
 		for (ActivityDef activityDef : getActivityDefs()) {
 			if (activityDef.getName().equalsIgnoreCase(ActivityDef.START)) {
 				return activityDef;
@@ -64,7 +66,7 @@ public class WorkflowDef extends CommonEntity {
 	}
 
 	public @NotNull
-	ActivityDef getStopActivityDef() throws ConfigurationException {
+	ActivityDef getStopActivityDef() {
 		for (ActivityDef activityDef : getActivityDefs()) {
 			if (activityDef.getName().equalsIgnoreCase(ActivityDef.STOP)) {
 				return activityDef;

@@ -6,13 +6,16 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.marzeta.wfengine.dao.ActivityDef;
+import com.marzeta.wfengine.dao.ContextDef;
+import com.marzeta.wfengine.dao.WorkflowDef;
 
 public class CommonEntityTest {
 
 	@Test
 	public void testDifferent() throws Exception {
-		ActivityDef activityDef1 = new ActivityDef();
-		ActivityDef activityDef2 = new ActivityDef();
+		WorkflowDef wd = new WorkflowDef("testDifferent", new ContextDef());
+		ActivityDef activityDef1 = new ActivityDef(wd, null);
+		ActivityDef activityDef2 = new ActivityDef(wd, null);
 		Set<ActivityDef> hashSet = new java.util.HashSet<ActivityDef>();
 		hashSet.add(activityDef1);
 
@@ -23,8 +26,9 @@ public class CommonEntityTest {
 
 	@Test
 	public void testSame() throws Exception {
-		ActivityDef activityDef1 = new ActivityDef();
-		ActivityDef activityDef2 = new ActivityDef();
+		WorkflowDef wd = new WorkflowDef("testSame", new ContextDef());
+		ActivityDef activityDef1 = new ActivityDef(wd, null);
+		ActivityDef activityDef2 = new ActivityDef(wd, null);
 		activityDef2.setId(activityDef1.getId());
 		Set<ActivityDef> hashSet = new java.util.HashSet<ActivityDef>();
 		hashSet.add(activityDef1);

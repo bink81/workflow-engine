@@ -4,9 +4,9 @@ import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.TransitionCommonEntity;
+import com.marzeta.wfengine.model.TransitionCommon;
 
-public class TransitionDef extends TransitionCommonEntity {
+public class TransitionDef extends TransitionCommon {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull

@@ -2,7 +2,6 @@ package com.marzeta.wfengine.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -10,23 +9,31 @@ import org.junit.Test;
 
 import com.marzeta.wfengine.commons.ConfigurationException;
 import com.marzeta.wfengine.dao.ActivityDef;
+import com.marzeta.wfengine.dao.ContextDef;
+import com.marzeta.wfengine.dao.WorkflowDef;
 import com.marzeta.wfengine.utils.TestUtils;
 
 public class WorkflowTest {
 
 	@Test(expected = ConfigurationException.class)
-	public void testMissingStartActivity() throws Exception {
-		Workflow workflow = TestUtils.createWorkflow();
-		ActivityDef activityDef = new ActivityDef();
-		workflow.getActivityFor(activityDef);
-		fail("getActivityFor should've thrown an exception!");
+	public void testMissingActivity() throws Exception {
+		WorkflowDef wd = new WorkflowDef("createWorkflow", new ContextDef());
+		ActivityDef activityDef = new ActivityDef(wd, "2");
+		wd.addActivity(activityDef);
+		Workflow workflow = new Workflow(wd);
+
+		Activity activity = workflow.getActivityFor(activityDef);
+
+		assertTrue(activity.getActivityDef().equals(activityDef));
 	}
 
 	@Test
 	public void testAnotherMissingStartActivity() throws Exception {
 		boolean condition = false;
-		Workflow workflow = TestUtils.createWorkflow();
-		ActivityDef activityDef = new ActivityDef();
+		WorkflowDef wd = new WorkflowDef("createWorkflow", new ContextDef());
+		Workflow workflow = new Workflow(wd);
+		ActivityDef activityDef = new ActivityDef(wd, "123");
+		wd.addActivity(activityDef);
 		try {
 			workflow.getActivityFor(activityDef);
 		} catch (ConfigurationException e) {

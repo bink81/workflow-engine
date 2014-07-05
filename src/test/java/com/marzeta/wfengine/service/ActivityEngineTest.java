@@ -19,7 +19,8 @@ public class ActivityEngineTest {
 
 	@Before
 	public void setUp() throws Exception {
-		workActivityDef = new WorkActivityDef();
+		WorkflowDef wd = new WorkflowDef("setUp", new ContextDef());
+		workActivityDef = new WorkActivityDef(wd, "setUp");
 	}
 
 	// ------------------------------------------------------------------------------------------------------------

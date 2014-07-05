@@ -2,22 +2,34 @@ package com.marzeta.wfengine.service;
 
 import java.util.HashMap;
 
-import com.marzeta.wfengine.dao.ContextDef;
-import com.marzeta.wfengine.model.ContextEntity;
+import javax.validation.constraints.NotNull;
 
-public class Context extends ContextEntity {
+import com.marzeta.wfengine.dao.ContextDef;
+import com.marzeta.wfengine.model.CommonEntity;
+
+public class Context extends CommonEntity {
 	private static final long serialVersionUID = 1L;
 
-	public Context() {
-	}
+	@NotNull
+	private final ContextDef contextDef;
 
-	public Context(ContextDef contextDef) {
-		setContextDef(contextDef);
+	private final HashMap<String, Object> contextObjects = new HashMap<String, Object>();
+
+	public Context(@NotNull ContextDef contextDef) {
+		this.contextDef = contextDef;
 		setName(contextDef.getName());
 		HashMap<String, Object> contextObjectDefs = contextDef.getContextObjectDefs();
-		for (String key : contextObjectDefs.keySet()){
+		for (String key : contextObjectDefs.keySet()) {
 			Object value = contextObjectDefs.get(key);
 			getContextObjects().put(key, value);
 		}
+	}
+
+	public ContextDef getContextDef() {
+		return contextDef;
+	}
+
+	public HashMap<String, Object> getContextObjects() {
+		return contextObjects;
 	}
 }

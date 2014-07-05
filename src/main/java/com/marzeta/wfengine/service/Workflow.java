@@ -67,7 +67,7 @@ public class Workflow extends CommonEntity {
 		return null;
 	}
 
-	public ArrayList<Activity> createNextActivity(Activity fromActivity) throws ConfigurationException {
+	public ArrayList<Activity> createNextActivity(Activity fromActivity) {
 		ArrayList<Activity> newActivities = new ArrayList<Activity>();
 		WorkflowDef workflowDef = getWorkflowDef();
 		for (TransitionDef transitionDef : workflowDef.getTransitionDefs()) {
@@ -75,7 +75,7 @@ public class Workflow extends CommonEntity {
 					&& transitionDef.getToActivityDef() != null && transitionDef.getResult().equals(fromActivity.getResult())) {
 				Activity toActivity = new Activity(transitionDef.getToActivityDef(), fromActivity.getWorkflow());
 				getActivities().add(toActivity);
-				getTransitions().add(new Transition(this, transitionDef));
+				getTransitions().add(new Transition(this, fromActivity, toActivity));
 				newActivities.add(toActivity);
 				break;
 			}
@@ -86,7 +86,8 @@ public class Workflow extends CommonEntity {
 		return newActivities;
 	}
 
-	public Activity getActivityFor(ActivityDef activityDef) throws ConfigurationException {
+	@NotNull
+	public Activity getActivityFor(ActivityDef activityDef) {
 		for (Activity activity : getActivities()) {
 			if (activity.getActivityDef() == activityDef) {
 				return activity;

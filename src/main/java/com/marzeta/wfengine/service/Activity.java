@@ -8,9 +8,9 @@ import javax.validation.constraints.NotNull;
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.dao.ActivityDef;
-import com.marzeta.wfengine.model.ActivityCommonEntity;
+import com.marzeta.wfengine.model.ActivityCommon;
 
-public class Activity extends ActivityCommonEntity {
+public class Activity extends ActivityCommon {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
 
 	private static final long serialVersionUID = 1L;

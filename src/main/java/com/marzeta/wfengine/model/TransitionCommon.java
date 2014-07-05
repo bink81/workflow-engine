@@ -1,6 +1,6 @@
 package com.marzeta.wfengine.model;
 
-public abstract class TransitionCommonEntity extends CommonEntity {
+public abstract class TransitionCommon extends CommonEntity {
 	private static final long serialVersionUID = 1L;
 
 	private long delay = 0;
