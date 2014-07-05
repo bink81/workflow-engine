@@ -20,10 +20,6 @@ public class Transition extends TransitionCommon {
 		this.workflow = workflow;
 		this.fromActivity = fromActivity;
 		this.toActivity = toActivity;
-		// this.fromActivity =
-		// workflow.getActivityFor(transitionDef.getFromActivityDef());
-		// this.toActivity =
-		// workflow.getActivityFor(transitionDef.getToActivityDef());
 	}
 
 	public Activity getFromActivity() {
@@ -43,5 +39,4 @@ public class Transition extends TransitionCommon {
 		return "Transition[ " + super.toString() + "fromActivity=" + fromActivity + ", toActivity=" + toActivity
 				+ ", workflow=" + workflow + "]";
 	}
-
 }

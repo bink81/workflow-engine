@@ -14,6 +14,7 @@ public class LoggingUtil {
 		LOG.setUseParentHandlers(false);
 		Handler conHdlr = new ConsoleHandler();
 		conHdlr.setFormatter(new Formatter() {
+			@Override
 			public String format(LogRecord record) {
 				return record.getLevel() 
 						+ " -:- " + record.getSourceClassName() + "." + record.getSourceMethodName() 

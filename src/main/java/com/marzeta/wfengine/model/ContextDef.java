@@ -17,9 +17,6 @@ public class ContextDef extends EntityCommon {
 		this.contextObjectDefs = contextObjectDefs;
 	}
 
-	public ContextDef() {
-	}
-
 	@Override
 	public String toString() {
 		return "ContextDef [" + super.toString() + ", contextObjectDefs=" + contextObjectDefs + "]";

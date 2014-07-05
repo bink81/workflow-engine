@@ -91,5 +91,4 @@ public class WorkflowDef extends EntityCommon {
 	public String toString() {
 		return "WorkflowDef [" + super.toString() + ", contextDef=" + contextDef + "]";
 	}
-
 }

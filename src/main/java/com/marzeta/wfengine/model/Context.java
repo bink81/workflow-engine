@@ -36,5 +36,4 @@ public class Context extends EntityCommon {
 	public String toString() {
 		return "Context [" + super.toString() + ", contextDef=" + contextDef + ", contextObjects=" + contextObjects + "]";
 	}
-
 }
