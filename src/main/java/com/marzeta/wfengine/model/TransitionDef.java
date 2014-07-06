@@ -1,25 +1,35 @@
 package com.marzeta.wfengine.model;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.model.common.TransitionCommon;
 
+@Entity
 public class TransitionDef extends TransitionCommon {
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
 	@NotNull
-	private final ActivityDef fromActivityDef;
+	private ActivityDef fromActivityDef = ActivityDef.DUMMY;
 
+	@ManyToOne
 	@NotNull
-	private final ActivityDef toActivityDef;
+	private ActivityDef toActivityDef = ActivityDef.DUMMY;
 
+	@ManyToOne
 	@NotNull
-	private final WorkflowDef workflowDef;
+	private WorkflowDef workflowDef = WorkflowDef.DUMMY;
 
+	@ManyToOne
 	@NotNull
-	private final IResult result;
+	private IResult result = OKResult.OK;
+
+	protected TransitionDef() {
+	}
 
 	public TransitionDef(@NotNull WorkflowDef workflowDef, @NotNull ActivityDef fromActivityDef,
 			@NotNull ActivityDef toActivityDef) {

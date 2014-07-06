@@ -1,5 +1,8 @@
 package com.marzeta.wfengine.model.common;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class TransitionCommon extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 

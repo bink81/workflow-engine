@@ -4,11 +4,23 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@MappedSuperclass
 public abstract class EntityCommon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@NotNull
+	@Size(min = 1, max = 30)
 	private String name = "";
 
+	@Id
+	@GeneratedValue
 	private String id = "";
 
 	public EntityCommon() {
@@ -16,11 +28,12 @@ public abstract class EntityCommon implements Serializable {
 	}
 
 	// ---------------------------------------------------------------
+	@NotNull
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(@NotNull String name) {
 		this.name = name;
 	}
 
@@ -60,5 +73,16 @@ public abstract class EntityCommon implements Serializable {
 	@Override
 	public String toString() {
 		return ", name=" + name + ", id=" + id;
+	}
+
+	@Version
+	protected Integer version;
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }

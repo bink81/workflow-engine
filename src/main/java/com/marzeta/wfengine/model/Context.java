@@ -2,17 +2,24 @@ package com.marzeta.wfengine.model;
 
 import java.util.HashMap;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.model.common.EntityCommon;
 
+@Entity
 public class Context extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
 	@NotNull
-	private final ContextDef contextDef;
+	private ContextDef contextDef = ContextDef.DUMMY;
 
 	private final HashMap<String, Object> contextObjects = new HashMap<String, Object>();
+
+	protected Context() {
+	}
 
 	public Context(@NotNull ContextDef contextDef) {
 		this.contextDef = contextDef;

@@ -3,21 +3,36 @@ package com.marzeta.wfengine.model;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IResult;
 import com.marzeta.wfengine.commons.OKResult;
 import com.marzeta.wfengine.model.common.ActivityCommon;
 
+@Entity
 public class Activity extends ActivityCommon {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
 
 	private static final long serialVersionUID = 1L;
 
 	@NotNull
-	private final Workflow workflow;
+	public static final Activity DUMMY = new Activity();
 
+	@ManyToOne
+	@NotNull
+	private Workflow workflow = Workflow.DUMMY;
+
+	@ManyToOne
 	private IResult result;
+
+	@ManyToOne
+	@NotNull
+	private ActivityDef activityDef = ActivityDef.DUMMY;
+
+	protected Activity() {
+	}
 
 	public IResult getResult() {
 		return result;
@@ -35,9 +50,6 @@ public class Activity extends ActivityCommon {
 	public ActivityDef getActivityDef() {
 		return activityDef;
 	}
-
-	@NotNull
-	private final ActivityDef activityDef;
 
 	public Activity(@NotNull ActivityDef activityDef, @NotNull Workflow workflow) {
 		super();

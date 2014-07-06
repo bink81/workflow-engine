@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
+
 import com.marzeta.wfengine.commons.LoggingUtil;
 import com.marzeta.wfengine.model.Activity;
 
+@MappedSuperclass
 public abstract class ActivityEngine extends EngineEntity {
-	private static final long serialVersionUID = 1L;
 
 	private static final String PROP_FILE = "properties.txt";
 
@@ -22,7 +25,7 @@ public abstract class ActivityEngine extends EngineEntity {
 	}
 
 	public ActivityEngine(String name) {
-		this.setName(name);
+		super(name);
 		readPropertiesFile();
 		LoggingUtil.setupLogger(LOG);
 	}
@@ -82,4 +85,15 @@ public abstract class ActivityEngine extends EngineEntity {
 	}
 
 	public abstract ArrayList<Activity> getActivities();
+
+	@Version
+	protected Integer version;
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 }

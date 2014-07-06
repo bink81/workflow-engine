@@ -16,7 +16,7 @@ public class WorkActivityDef extends ActivityDef {
 		MAYBE
 	}
 
-	public WorkActivityDef(@NotNull WorkflowDef workflowDef, String name) {
+	public WorkActivityDef(@NotNull WorkflowDef workflowDef, @NotNull String name) {
 		super(workflowDef, name);
 	}
 

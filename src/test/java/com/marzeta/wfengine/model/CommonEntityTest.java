@@ -10,8 +10,8 @@ public class CommonEntityTest {
 	@Test
 	public void testDifferent() throws Exception {
 		WorkflowDef wd = new WorkflowDef("testDifferent", new ContextDef());
-		ActivityDef activityDef1 = new ActivityDef(wd, null);
-		ActivityDef activityDef2 = new ActivityDef(wd, null);
+		ActivityDef activityDef1 = new ActivityDef(wd, "activityDef1");
+		ActivityDef activityDef2 = new ActivityDef(wd, "activityDef2");
 		Set<ActivityDef> hashSet = new java.util.HashSet<ActivityDef>();
 		hashSet.add(activityDef1);
 
@@ -23,8 +23,8 @@ public class CommonEntityTest {
 	@Test
 	public void testSame() throws Exception {
 		WorkflowDef wd = new WorkflowDef("testSame", new ContextDef());
-		ActivityDef activityDef1 = new ActivityDef(wd, null);
-		ActivityDef activityDef2 = new ActivityDef(wd, null);
+		ActivityDef activityDef1 = new ActivityDef(wd, "activityDef1");
+		ActivityDef activityDef2 = new ActivityDef(wd, "activityDef1");
 		activityDef2.setId(activityDef1.getId());
 		Set<ActivityDef> hashSet = new java.util.HashSet<ActivityDef>();
 		hashSet.add(activityDef1);

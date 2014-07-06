@@ -45,8 +45,6 @@ public class ActivityEngineTest {
 	}
 
 	private class ActivityEngineWithNoActivities extends ActivityEngine {
-		private static final long serialVersionUID = 1L;
-
 		public ActivityEngineWithNoActivities(String name) {
 			super(name);
 		}
@@ -117,7 +115,6 @@ public class ActivityEngineTest {
 	}
 
 	private class ActivityEngineWithException extends ActivityEngine {
-		private static final long serialVersionUID = 1L;
 
 		public ActivityEngineWithException(String name) {
 			super(name);

@@ -9,7 +9,7 @@ import com.marzeta.wfengine.model.WorkflowDef;
 public class EmptyActivityDef extends ActivityDef {
 	private static final long serialVersionUID = 1L;
 
-	public EmptyActivityDef(@NotNull WorkflowDef workflowDef, String name) {
+	public EmptyActivityDef(@NotNull WorkflowDef workflowDef, @NotNull String name) {
 		super(workflowDef, name);
 	}
 

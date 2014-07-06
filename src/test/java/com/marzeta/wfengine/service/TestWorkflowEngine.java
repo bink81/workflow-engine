@@ -11,8 +11,6 @@ import com.marzeta.wfengine.model.Workflow;
 import com.marzeta.wfengine.model.WorkflowDef;
 
 public class TestWorkflowEngine extends ActivityEngine {
-	private static final long serialVersionUID = 1L;
-
 	private final Workflow newWorkflow;
 
 	public TestWorkflowEngine() {
