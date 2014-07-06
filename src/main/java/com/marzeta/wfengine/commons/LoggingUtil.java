@@ -10,18 +10,18 @@ import java.util.logging.Logger;
 public class LoggingUtil {
 
 	public static void setupLogger(Logger LOG) {
-		LOG.setLevel(Level.INFO);
+		LOG.setLevel(Level.ALL);
 		LOG.setUseParentHandlers(false);
 		Handler conHdlr = new ConsoleHandler();
+		conHdlr.setLevel(Level.ALL);
 		conHdlr.setFormatter(new Formatter() {
 			@Override
 			public String format(LogRecord record) {
-				return record.getLevel() 
-						+ " -:- " + record.getSourceClassName() + "." + record.getSourceMethodName() 
-						+ " -:- " + record.getMessage()	+ "\n";
+				return record.getLevel() + " -:- " + record.getSourceClassName() + "." + record.getSourceMethodName() + " -:- "
+						+ record.getMessage() + "\n";
 			}
 		});
-		for (Handler handler : LOG.getHandlers()){
+		for (Handler handler : LOG.getHandlers()) {
 			LOG.removeHandler(handler);
 		}
 		LOG.addHandler(conHdlr);

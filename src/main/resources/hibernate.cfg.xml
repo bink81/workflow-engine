@@ -11,7 +11,6 @@
   <property name="hibernate.connection.password"></property>
   <property name="hibernate.hbm2ddl.auto">create</property>
   
-  <!-- Show and print nice SQL on stdout -->
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
 </session-factory>

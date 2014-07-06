@@ -1,6 +1,7 @@
 package com.marzeta.wfengine.model;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -24,10 +25,10 @@ public class Context extends EntityCommon {
 	public Context(@NotNull ContextDef contextDef) {
 		this.contextDef = contextDef;
 		setName(contextDef.getName());
-		HashMap<String, Object> contextObjectDefs = contextDef.getContextObjectDefs();
-		for (String key : contextObjectDefs.keySet()) {
-			Object value = contextObjectDefs.get(key);
-			getContextObjects().put(key, value);
+		List<ContextObjectDef> contextObjectDefs = contextDef.getContextObjectDefs();
+		for (ContextObjectDef cod : contextObjectDefs) {
+			Object value = cod.getValue();
+			getContextObjects().put(cod.getKey(), value);
 		}
 	}
 

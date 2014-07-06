@@ -7,6 +7,7 @@ import com.marzeta.wfengine.dao.EmptyActivityDef;
 import com.marzeta.wfengine.dao.WorkActivityDef;
 import com.marzeta.wfengine.model.Activity;
 import com.marzeta.wfengine.model.ContextDef;
+import com.marzeta.wfengine.model.ContextObjectDef;
 import com.marzeta.wfengine.model.Workflow;
 import com.marzeta.wfengine.model.WorkflowDef;
 
@@ -28,7 +29,7 @@ public class TestWorkflowEngine extends ActivityEngine {
 
 	private Workflow createTestWorkflow() {
 		ContextDef contextDef = new ContextDef();
-		contextDef.getContextObjectDefs().put("CURRENT_DATE", new Date());
+		contextDef.getContextObjectDefs().add(new ContextObjectDef(contextDef, "CURRENT_DATE", new Date().toString()));
 		WorkflowDef workflowDef = new WorkflowDef("TestWorkflowDef", contextDef);
 
 		WorkActivityDef workActivityDef = new WorkActivityDef(workflowDef, "Work");

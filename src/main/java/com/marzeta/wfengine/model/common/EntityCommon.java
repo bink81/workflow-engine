@@ -1,13 +1,11 @@
 package com.marzeta.wfengine.model.common;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,11 +18,10 @@ public abstract class EntityCommon implements Serializable {
 	private String name = "";
 
 	@Id
-	@GeneratedValue
-	private String id = "";
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private long id;
 
-	public EntityCommon() {
-		setId(getCurrentTime());
+	protected EntityCommon() {
 	}
 
 	@NotNull
@@ -36,52 +33,41 @@ public abstract class EntityCommon implements Serializable {
 		this.name = name;
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	private String getCurrentTime() {
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd-hh.mm.ss.SSS");
-		String strDate = sdf.format(date);
-		return strDate;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (this.id ^ (this.id >>> 32));
+		result = prime * result + (this.name.hashCode());
+		return result;
 	}
 
 	@Override
-	public final boolean equals(Object other) {
-		if (this == other)
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		if (other == null)
+		if (obj == null)
 			return false;
-		if (other instanceof EntityCommon) {
-			EntityCommon that = (EntityCommon) other;
-			return (this.getId() == that.getId() && this.getClass().equals(that.getClass()));
-		}
-		return false;
-	}
-
-	@Override
-	public final int hashCode() {
-		return getId().hashCode();
+		if (getClass() != obj.getClass())
+			return false;
+		EntityCommon other = (EntityCommon) obj;
+		if (this.id != other.id)
+			return false;
+		if (!this.name.equals(other.name))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		return ", name=" + name + ", id=" + id;
-	}
-
-	@Version
-	protected Integer version;
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
 	}
 }
