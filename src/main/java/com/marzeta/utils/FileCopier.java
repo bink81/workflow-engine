@@ -6,13 +6,21 @@ import java.nio.file.Files;
 
 public class FileCopier {
 	private static final String TEST_DIR_1 = "d:/MP3";
+
 	private static final String TEST_DIR_2 = "o:/MP3";
+
 	private final File source;
+
 	private final File destination;
+
 	private long skippedFileCount;
+
 	private long copiedFileCount;
+
 	private long createdFolderCount;
+
 	private long skippedFolderCount;
+
 	private final boolean commit = false;
 
 	public FileCopier(String source, String destination) {
@@ -21,9 +29,9 @@ public class FileCopier {
 		this.destination = new File(destination);
 	}
 
-	private void checkPath(String source) {
-		if (!existingResource(source)) {
-			throw new IllegalArgumentException("Invalid path: " + source);
+	private void checkPath(String sourcePath) {
+		if (!existingResource(sourcePath)) {
+			throw new IllegalArgumentException("Invalid path: " + sourcePath);
 		}
 	}
 

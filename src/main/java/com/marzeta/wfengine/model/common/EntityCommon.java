@@ -27,7 +27,6 @@ public abstract class EntityCommon implements Serializable {
 		setId(getCurrentTime());
 	}
 
-	// ---------------------------------------------------------------
 	@NotNull
 	public String getName() {
 		return name;

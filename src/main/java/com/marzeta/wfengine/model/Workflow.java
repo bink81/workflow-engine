@@ -80,10 +80,10 @@ public class Workflow extends EntityCommon {
 
 	public ArrayList<Activity> createNextActivity(Activity fromActivity) {
 		ArrayList<Activity> newActivities = new ArrayList<Activity>();
-		WorkflowDef workflowDef = getWorkflowDef();
-		for (TransitionDef transitionDef : workflowDef.getTransitionDefs()) {
+		WorkflowDef wd = getWorkflowDef();
+		for (TransitionDef transitionDef : wd.getTransitionDefs()) {
 			if (transitionDef.getFromActivityDef().equals(fromActivity.getActivityDef())
-					&& transitionDef.getToActivityDef() != null && transitionDef.getResult().equals(fromActivity.getResult())) {
+					&& transitionDef.getResult().equals(fromActivity.getResult())) {
 				Activity toActivity = new Activity(transitionDef.getToActivityDef(), fromActivity.getWorkflow());
 				getActivities().add(toActivity);
 				getTransitions().add(new Transition(this, fromActivity, toActivity));
