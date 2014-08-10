@@ -10,10 +10,11 @@ import com.marzeta.wfengine.dao.ContextDefDaoJpa;
 import com.marzeta.wfengine.model.ContextDef;
 
 public class HibernateSessionManagerTest {
+	private final ContextDefDao dao = new ContextDefDaoJpa();
+
 	@Test
 	public void testPersistWithDao() throws Exception {
 		ContextDef contextDef = createDummyContextDef();
-		ContextDefDao dao = new ContextDefDaoJpa();
 
 		long id = dao.create(contextDef);
 		ContextDef newContextDef = dao.retrieveById(id);
@@ -25,7 +26,6 @@ public class HibernateSessionManagerTest {
 	@Test
 	public void testUpdateWithDao() throws Exception {
 		ContextDef contextDef = createDummyContextDef();
-		ContextDefDao dao = new ContextDefDaoJpa();
 
 		long id = dao.create(contextDef);
 		ContextDef newContextDef = dao.retrieveById(id);
