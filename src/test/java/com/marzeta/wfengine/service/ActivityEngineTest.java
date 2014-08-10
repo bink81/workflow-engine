@@ -91,11 +91,11 @@ public class ActivityEngineTest {
 	// public IResult execute() {
 	// counter++;
 	// System.out.println("Running " + counter);
-	// return OKResult.DONE;
+	// return Result.DONE;
 	// }
 	// }
 	//
-	// public enum OKResult implements IResult {
+	// public enum Result implements IResult {
 	// DONE, ERROR
 	// }
 

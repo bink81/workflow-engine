@@ -2,7 +2,7 @@ package com.marzeta.wfengine.dao;
 
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.commons.IResult;
+import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.model.ActivityDef;
 import com.marzeta.wfengine.model.WorkflowDef;
 import com.marzeta.wfengine.service.ActivityEngine;
@@ -15,7 +15,7 @@ public class ErroneousActivityDef extends ActivityDef {
 	}
 
 	@Override
-	public IResult execute() throws Throwable {
+	public Result execute() throws Throwable {
 		System.out.println("Doing ErroneousActivityDef...");
 		throw new Exception(ActivityEngine.EXCEPTION_TEST_TEXT);
 	}

@@ -2,7 +2,7 @@ package com.marzeta.wfengine.dao;
 
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.commons.IResult;
+import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.model.ActivityDef;
 import com.marzeta.wfengine.model.WorkflowDef;
 
@@ -14,7 +14,7 @@ public class EmptyActivityDef extends ActivityDef {
 	}
 
 	@Override
-	public IResult execute() {
+	public Result execute() {
 		System.out.println("Doing something with a result = null\n");
 		return null;
 	}

@@ -1,6 +1,7 @@
 package com.marzeta.wfengine.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -18,10 +19,10 @@ public class Workflow extends EntityCommon {
 	public static final Workflow DUMMY = new Workflow();
 
 	@OneToMany(mappedBy = "workflow")
-	private ArrayList<Activity> activities = new ArrayList<Activity>();
+	private Collection<Activity> activities = new ArrayList<Activity>();
 
 	@OneToMany(mappedBy = "workflow")
-	private ArrayList<Transition> transitions = new ArrayList<Transition>();
+	private Collection<Transition> transitions = new ArrayList<Transition>();
 
 	@ManyToOne
 	@NotNull
@@ -37,19 +38,19 @@ public class Workflow extends EntityCommon {
 		return workflowDef;
 	}
 
-	public ArrayList<Activity> getActivities() {
+	public Collection<Activity> getActivities() {
 		return activities;
 	}
 
-	public void setActivities(ArrayList<Activity> activities) {
+	public void setActivities(Collection<Activity> activities) {
 		this.activities = activities;
 	}
 
-	public ArrayList<Transition> getTransitions() {
+	public Collection<Transition> getTransitions() {
 		return transitions;
 	}
 
-	public void setTransitions(ArrayList<Transition> transitions) {
+	public void setTransitions(Collection<Transition> transitions) {
 		this.transitions = transitions;
 	}
 

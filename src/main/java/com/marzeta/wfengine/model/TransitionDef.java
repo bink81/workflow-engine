@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.commons.OKResult;
+import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.model.common.TransitionCommon;
 
 @Entity
@@ -24,20 +23,19 @@ public class TransitionDef extends TransitionCommon {
 	@NotNull
 	private WorkflowDef workflowDef = WorkflowDef.DUMMY;
 
-	@ManyToOne
 	@NotNull
-	private IResult result = OKResult.OK;
+	private Result result = Result.OK;
 
 	protected TransitionDef() {
 	}
 
 	public TransitionDef(@NotNull WorkflowDef workflowDef, @NotNull ActivityDef fromActivityDef,
 			@NotNull ActivityDef toActivityDef) {
-		this(workflowDef, fromActivityDef, toActivityDef, OKResult.OK);
+		this(workflowDef, fromActivityDef, toActivityDef, Result.OK);
 	}
 
 	public TransitionDef(@NotNull WorkflowDef workflowDef, @NotNull ActivityDef fromActivityDef,
-			@NotNull ActivityDef toActivityDef, @NotNull IResult result) {
+			@NotNull ActivityDef toActivityDef, @NotNull Result result) {
 		super();
 		this.workflowDef = workflowDef;
 		this.fromActivityDef = fromActivityDef;
@@ -61,7 +59,7 @@ public class TransitionDef extends TransitionCommon {
 	}
 
 	@NotNull
-	public IResult getResult() {
+	public Result getResult() {
 		return result;
 	}
 

@@ -7,12 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.common.ActivityCommon;
+import com.marzeta.wfengine.commons.Result;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
 @Entity
-public class Activity extends ActivityCommon {
+public class Activity extends EntityCommon {
 	private final static Logger LOG = Logger.getLogger(Activity.class.getName());
 
 	private static final long serialVersionUID = 1L;
@@ -24,21 +23,22 @@ public class Activity extends ActivityCommon {
 	@NotNull
 	private Workflow workflow = Workflow.DUMMY;
 
-	@ManyToOne
-	private IResult result;
+	private Result result;
 
 	@ManyToOne
 	@NotNull
 	private ActivityDef activityDef = ActivityDef.DUMMY;
 
+	private boolean urgent = false;
+
 	protected Activity() {
 	}
 
-	public IResult getResult() {
+	public Result getResult() {
 		return result;
 	}
 
-	public void setResult(IResult result) {
+	public void setResult(Result result) {
 		this.result = result;
 	}
 
@@ -75,15 +75,15 @@ public class Activity extends ActivityCommon {
 
 	// ------------------------------------------------------------
 	// main method
-	public final IResult run() throws Throwable {
+	public final Result run() throws Throwable {
 		checkMandatoryPreconditions();
 		checkPreconditions();
 		LOG.info(getId() + " -> Activity started: " + this);
 		ActivityDef activityDef2 = getActivityDef();
 		setResult(activityDef2.execute());
 		if (getResult() == null) {
-			LOG.warning("No result present, assigning result to default value: " + OKResult.OK);
-			setResult(OKResult.OK);
+			LOG.warning("No result present, assigning result to default value: " + Result.OK);
+			setResult(Result.OK);
 		}
 		LOG.info(getId() + " -> Finished activity: " + this);
 		checkPostconditions();
@@ -105,5 +105,13 @@ public class Activity extends ActivityCommon {
 	public String toString() {
 		return "Activity [ " + super.toString() + "workflow=" + workflow + ", result=" + result + ", activityDef="
 				+ activityDef + "]";
+	}
+
+	public boolean isUrgent() {
+		return urgent;
+	}
+
+	public void setUrgent(boolean urgent) {
+		this.urgent = urgent;
 	}
 }

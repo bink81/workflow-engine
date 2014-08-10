@@ -3,6 +3,7 @@ package com.marzeta.wfengine.service;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.dao.EmptyActivityDef;
 import com.marzeta.wfengine.dao.WorkActivityDef;
 import com.marzeta.wfengine.model.Activity;
@@ -38,8 +39,8 @@ public class TestWorkflowEngine extends ActivityEngine {
 		workflowDef.addActivity(emptyActivityDef);
 
 		workflowDef.createLink(workflowDef.getStartActivityDef(), workActivityDef);
-		workflowDef.createLink(workActivityDef, emptyActivityDef, WorkActivityDef.Result.YES);
-		workflowDef.createLink(workActivityDef, workflowDef.getStopActivityDef(), WorkActivityDef.Result.NO);
+		workflowDef.createLink(workActivityDef, emptyActivityDef, Result.OK);
+		workflowDef.createLink(workActivityDef, workflowDef.getStopActivityDef(), Result.NOK);
 		workflowDef.createLink(emptyActivityDef, workflowDef.getStopActivityDef());
 
 		getStorage().saveObjectToFile(workflowDef);

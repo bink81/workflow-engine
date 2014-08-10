@@ -1,6 +1,7 @@
 package com.marzeta.wfengine.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +9,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.ConfigurationException;
-import com.marzeta.wfengine.commons.IResult;
+import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.model.common.EntityCommon;
 
 @Entity
@@ -19,10 +20,10 @@ public class WorkflowDef extends EntityCommon {
 	public static final WorkflowDef DUMMY = new WorkflowDef();
 
 	@OneToMany(mappedBy = "workflowDef")
-	private ArrayList<ActivityDef> activityDefs = new ArrayList<ActivityDef>();
+	private Collection<ActivityDef> activityDefs = new ArrayList<ActivityDef>();
 
 	@OneToMany(mappedBy = "workflowDef")
-	private ArrayList<TransitionDef> transitionDefs = new ArrayList<TransitionDef>();
+	private Collection<TransitionDef> transitionDefs = new ArrayList<TransitionDef>();
 
 	@ManyToOne
 	@NotNull
@@ -38,7 +39,7 @@ public class WorkflowDef extends EntityCommon {
 		activityDefs.add(new ActivityDef(this, ActivityDef.STOP));
 	}
 
-	public ArrayList<ActivityDef> getActivityDefs() {
+	public Collection<ActivityDef> getActivityDefs() {
 		return activityDefs;
 	}
 
@@ -46,7 +47,7 @@ public class WorkflowDef extends EntityCommon {
 		this.activityDefs = activityDefs;
 	}
 
-	public ArrayList<TransitionDef> getTransitionDefs() {
+	public Collection<TransitionDef> getTransitionDefs() {
 		return transitionDefs;
 	}
 
@@ -92,7 +93,7 @@ public class WorkflowDef extends EntityCommon {
 	}
 
 	public void createLink(@NotNull ActivityDef fromActivityDef, @NotNull ActivityDef toActivityDef,
-			@NotNull IResult result) {
+			@NotNull Result result) {
 		getTransitionDefs().add(new TransitionDef(this, fromActivityDef, toActivityDef, result));
 	}
 

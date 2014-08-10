@@ -13,6 +13,8 @@ import com.marzeta.wfengine.model.common.EntityCommon;
 public class Context extends EntityCommon {
 	private static final long serialVersionUID = 1L;
 
+	public static final Context DUMMY = new Context();
+
 	@ManyToOne
 	@NotNull
 	private ContextDef contextDef = ContextDef.DUMMY;

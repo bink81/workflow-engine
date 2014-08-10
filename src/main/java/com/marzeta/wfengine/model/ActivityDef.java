@@ -7,12 +7,11 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.marzeta.wfengine.commons.IActivityDef;
-import com.marzeta.wfengine.commons.IResult;
-import com.marzeta.wfengine.commons.OKResult;
-import com.marzeta.wfengine.model.common.ActivityCommon;
+import com.marzeta.wfengine.commons.Result;
+import com.marzeta.wfengine.model.common.EntityCommon;
 
 @Entity
-public class ActivityDef extends ActivityCommon implements IActivityDef {
+public class ActivityDef extends EntityCommon implements IActivityDef {
 	private static final long serialVersionUID = 1L;
 
 	private final static Logger LOG = Logger.getLogger(ActivityDef.class.getName());
@@ -29,6 +28,16 @@ public class ActivityDef extends ActivityCommon implements IActivityDef {
 	@ManyToOne
 	@NotNull
 	private WorkflowDef workflowDef = WorkflowDef.DUMMY;
+
+	private boolean urgent = false;
+
+	public boolean isUrgent() {
+		return urgent;
+	}
+
+	public void setUrgent(boolean urgent) {
+		this.urgent = urgent;
+	}
 
 	protected ActivityDef() {
 	}
@@ -49,13 +58,13 @@ public class ActivityDef extends ActivityCommon implements IActivityDef {
 	}
 
 	@Override
-	public IResult execute() throws Throwable {
+	public Result execute() throws Throwable {
 		LOG.info("Processing activity " + this);
-		return OKResult.OK;
+		return Result.OK;
 	}
 
 	@Override
 	public String toString() {
-		return "ActivityDef [ " + super.toString() + "workflowDef=" + workflowDef + "]";
+		return "ActivityDef [ " + super.toString() + "workflowDef=" + workflowDef + "urgent=" + urgent + "]";
 	}
 }
