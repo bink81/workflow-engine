@@ -23,7 +23,6 @@ public class Storage {
 	}
 
 	public String saveObjectToFile(EntityCommon object) {
-//		System.out.println("Saving workflow " + object);
 		String filename = object.toString() + ".xml";
 		try {
 			FileOutputStream fout = new FileOutputStream(filename);
