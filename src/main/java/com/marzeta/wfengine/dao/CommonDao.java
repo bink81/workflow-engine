@@ -5,9 +5,9 @@ import java.io.Serializable;
 import com.marzeta.wfengine.model.common.EntityCommon;
 
 public interface CommonDao<T extends EntityCommon, ID extends Serializable> {
-	T findById(ID id);
+	T retrieveById(ID id);
 
-	long save(T entity);
+	long create(T entity);
 
 	T update(T entity);
 }

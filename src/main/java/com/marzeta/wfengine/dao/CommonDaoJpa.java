@@ -15,13 +15,13 @@ public abstract class CommonDaoJpa<T extends EntityCommon, ID extends Serializab
 	}
 
 	@Override
-	public T findById(ID id) {
+	public T retrieveById(ID id) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		return (T) session.get(getPersistentClass(), id);
 	}
 
 	@Override
-	public long save(T entity) {
+	public long create(T entity) {
 		Session session = HibernateSessionManager.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(entity);
@@ -31,8 +31,12 @@ public abstract class CommonDaoJpa<T extends EntityCommon, ID extends Serializab
 
 	@Override
 	public T update(T entity) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateSessionManager.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.update(entity);
+		T saved = (T) session.get(getPersistentClass(), entity.getId());
+		session.getTransaction().commit();
+		return saved;
 	}
 
 	public Class<T> getPersistentClass() {

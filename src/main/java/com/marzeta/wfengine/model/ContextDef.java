@@ -32,4 +32,27 @@ public class ContextDef extends EntityCommon {
 	public List<ContextObjectDef> getContextObjectDefs() {
 		return contextObjectDefs;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + this.contextObjectDefs.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContextDef other = (ContextDef) obj;
+		if ((this.contextObjectDefs.size() > 0 || other.contextObjectDefs.size() > 0)
+				&& !this.contextObjectDefs.equals(other.contextObjectDefs))
+			return false;
+		return true;
+	}
 }
