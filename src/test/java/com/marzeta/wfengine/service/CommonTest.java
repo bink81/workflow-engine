@@ -10,9 +10,7 @@ public abstract class CommonTest {
 			currentSession = HibernateSessionManager.getSessionFactory().getCurrentSession();
 		} catch (HibernateException e) {
 			currentSession = HibernateSessionManager.getSessionFactory().openSession();
-			System.err.println("-Created session: " + currentSession);
 		}
-		System.err.println("-- " + currentSession);
 		return currentSession;
 	}
 }
