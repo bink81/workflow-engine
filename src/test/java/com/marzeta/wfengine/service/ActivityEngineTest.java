@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,13 +17,16 @@ import com.marzeta.wfengine.model.ContextDef;
 import com.marzeta.wfengine.model.Workflow;
 import com.marzeta.wfengine.model.WorkflowDef;
 
-public class ActivityEngineTest {
+public class ActivityEngineTest extends CommonTest {
 	WorkActivityDef workActivityDef;
+
+	Session session;
 
 	@Before
 	public void setUp() throws Exception {
 		WorkflowDef wd = new WorkflowDef("setUp", new ContextDef());
 		workActivityDef = new WorkActivityDef(wd, "setUp");
+		session = getOrOpenSession();
 	}
 
 	// ------------------------------------------------------------------------------------------------------------
@@ -102,7 +106,7 @@ public class ActivityEngineTest {
 	// ------------------------------------------------------------------------------------------------------------
 	@Test
 	public void testRunWithWorkflow() throws Exception {
-		TestWorkflowEngine engine = new TestWorkflowEngine();
+		TestWorkflowEngine engine = new TestWorkflowEngine(getOrOpenSession());
 		engine.run();
 
 		assertEquals(1, engine.getInternalDelay());
@@ -123,11 +127,10 @@ public class ActivityEngineTest {
 		@Override
 		public ArrayList<Activity> getActivities() {
 			ArrayList<Activity> arrayList = new ArrayList<Activity>();
-			ContextDef contextDef = new ContextDef();
-			WorkflowDef workflowDef = new WorkflowDef("ErroneousWorkflowDef", contextDef);
+			WorkflowDef workflowDef = new WorkflowDefService(session).createWorkflowDef();
 			workflowDef.addActivity(new ActivityDef(workflowDef, "start"));
 			Workflow workflow = null;
-			workflow = new Workflow(workflowDef);
+			workflow = new WorkflowService(session).createWorkflow(workflowDef);
 			ErroneousActivityDef activityDef = new ErroneousActivityDef(workflowDef, "ErroneousActivityDef");
 			workflowDef.addActivity(activityDef);
 			Activity activity = new Activity(activityDef, workflow);

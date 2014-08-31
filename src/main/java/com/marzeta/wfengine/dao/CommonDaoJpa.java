@@ -5,10 +5,11 @@ import java.io.Serializable;
 import org.hibernate.Session;
 
 import com.marzeta.wfengine.model.common.EntityCommon;
-import com.marzeta.wfengine.service.HibernateSessionManager;
 
 public abstract class CommonDaoJpa<T extends EntityCommon, ID extends Serializable> implements CommonDao<T, ID> {
 	private Class<T> persistentClass;
+
+	private Session session;
 
 	public CommonDaoJpa(Class<T> persistentClass) {
 		this.setPersistentClass(persistentClass);
@@ -16,27 +17,24 @@ public abstract class CommonDaoJpa<T extends EntityCommon, ID extends Serializab
 
 	@Override
 	public T retrieveById(ID id) {
-		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		return (T) session.get(getPersistentClass(), id);
+		return (T) getSession().get(getPersistentClass(), id);
+	}
+
+	private Session getSession() {
+		return session;
 	}
 
 	@Override
 	public long create(T entity) {
-		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.save(entity);
-		session.getTransaction().commit();
+		getSession().save(entity);
 		return entity.getId();
 	}
 
 	@Override
 	public T update(T entity) {
-		Session session = HibernateSessionManager.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.update(entity);
-		T saved = (T) session.get(getPersistentClass(), entity.getId());
-		session.getTransaction().commit();
-		return saved;
+		getSession().update(entity);
+		T savedEntity = (T) getSession().get(getPersistentClass(), entity.getId());
+		return savedEntity;
 	}
 
 	public Class<T> getPersistentClass() {
@@ -45,5 +43,10 @@ public abstract class CommonDaoJpa<T extends EntityCommon, ID extends Serializab
 
 	public void setPersistentClass(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
+	}
+
+	@Override
+	public void setSession(Session session) {
+		this.session = session;
 	}
 }

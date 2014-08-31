@@ -3,6 +3,8 @@ package com.marzeta.wfengine.service;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.hibernate.Session;
+
 import com.marzeta.wfengine.commons.Result;
 import com.marzeta.wfengine.dao.EmptyActivityDef;
 import com.marzeta.wfengine.dao.WorkActivityDef;
@@ -15,8 +17,11 @@ import com.marzeta.wfengine.model.WorkflowDef;
 public class TestWorkflowEngine extends ActivityEngine {
 	private final Workflow newWorkflow;
 
-	public TestWorkflowEngine() {
+	Session session;
+
+	public TestWorkflowEngine(Session session) {
 		super("TestWorkflowEngine");
+		this.session = session;
 		newWorkflow = createTestWorkflow();
 	}
 
@@ -29,9 +34,9 @@ public class TestWorkflowEngine extends ActivityEngine {
 	}
 
 	private Workflow createTestWorkflow() {
-		ContextDef contextDef = new ContextDef();
+		WorkflowDef workflowDef = new WorkflowDefService(session).createWorkflowDef();
+		ContextDef contextDef = workflowDef.getContextDef();
 		contextDef.getContextObjectDefs().add(new ContextObjectDef(contextDef, "CURRENT_DATE", new Date().toString()));
-		WorkflowDef workflowDef = new WorkflowDef("TestWorkflowDef", contextDef);
 
 		WorkActivityDef workActivityDef = new WorkActivityDef(workflowDef, "Work");
 		workflowDef.addActivity(workActivityDef);
@@ -47,6 +52,6 @@ public class TestWorkflowEngine extends ActivityEngine {
 		// we cannot check if we can read it because entities are not beans anymore
 		// workflowDef = (WorkflowDef) getStorage().readFile(filename);
 
-		return workflowDef.startWorkflow();
+		return new WorkflowService(session).createWorkflow(workflowDef);
 	}
 }

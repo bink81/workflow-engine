@@ -68,6 +68,6 @@ public abstract class EntityCommon implements Serializable {
 
 	@Override
 	public String toString() {
-		return ", name=" + name + ", id=" + id;
+		return ", name=" + name + ", id=" + id + ", ";
 	}
 }

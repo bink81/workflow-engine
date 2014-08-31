@@ -34,6 +34,11 @@ public class Workflow extends EntityCommon {
 	protected Workflow() {
 	}
 
+	public Workflow(@NotNull WorkflowDef workflowDef) {
+		this.workflowDef = workflowDef;
+		setName(workflowDef.getName());
+	}
+
 	public WorkflowDef getWorkflowDef() {
 		return workflowDef;
 	}
@@ -60,14 +65,6 @@ public class Workflow extends EntityCommon {
 
 	public void setContext(Context context) {
 		this.context = context;
-	}
-
-	public Workflow(@NotNull WorkflowDef workflowDef) {
-		this.workflowDef = workflowDef;
-		setName(workflowDef.getName());
-		ActivityDef startActivityDef = workflowDef.getStartActivityDef();
-		getActivities().add(new Activity(startActivityDef, this));
-		setContext(new Context(workflowDef.getContextDef()));
 	}
 
 	public Activity getNextActivity() {

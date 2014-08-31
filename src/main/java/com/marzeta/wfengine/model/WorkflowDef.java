@@ -64,10 +64,6 @@ public class WorkflowDef extends EntityCommon {
 		this.contextDef = contextDef;
 	}
 
-	public Workflow startWorkflow() {
-		return new Workflow(this);
-	}
-
 	public @NotNull
 	ActivityDef getStartActivityDef() {
 		for (ActivityDef activityDef : getActivityDefs()) {
